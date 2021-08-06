@@ -5,7 +5,7 @@ import PostMessage from '../models/postMessage.js'
 const router = express.Router();
 
 export const getPosts = async (req, res) => {
-    console.log('Boom!!!');
+    console.log('Posts get');
     try {
         const postMessages = await PostMessage.find();
         res.status(200).json(postMessages);
@@ -15,6 +15,21 @@ export const getPosts = async (req, res) => {
     }  
 }
 
+
+export const getPostsBySearch = async (req, res) => {
+
+    const { searchQuery, tags } = req.query;
+
+    try {
+        const title = new RegExp(searchQuery, 'i');
+
+        const post = await PostMessage.find({ $or: [{ title }, { tags: { $in: tags.split(',') } }]});
+
+        res.json({ data: post })
+    } catch (error) {
+        res.status(404).json({ message:  error.message});
+    }
+}
 
 export const createPost = async (req, res) => {
     
