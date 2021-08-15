@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.send('Hello here!!!0');
 });
 
-const PORT = process.env.PORT || 25761;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.CONNECTIION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
