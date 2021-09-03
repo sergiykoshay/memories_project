@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  {useParams, useHistory } from 'react-router-dom';
 import { Paper, Typography, Divider } from '@material-ui/core';
 import Loader from '../Loader/Loader';
+import CommentSection from './CommentSection';
 import { getPost, getPostsBySearch } from '../../actions/posts'
 import moment from 'moment';
 import useStyles from './styles';
@@ -53,7 +54,7 @@ const PostDetails = () => {
                     <Divider style={{ margin: '20px 0' }} />
                     <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
                     <Divider style={{ margin: '20px 0' }} />
-                    <Typography variant="body1"><strong>Comments - coming soon!</strong></Typography>
+                    <CommentSection post={post} />
                     <Divider style={{ margin: '20px 0' }} />
                 </div>
                 <div className={classes.imageSection}>
